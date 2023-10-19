@@ -5,10 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "frontend": "cd client",
+    "frontend": "cd client && npm run dev",
     "backend": "cd server && node server.js",
     "dev": "concurrently \"npm run frontend\" \"npm run backend\""
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.1"
+  }
 }

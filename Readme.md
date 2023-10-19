@@ -1,14 +1,25 @@
 
 # Loomen
 
-Loomen is a platform for freelancers, companies to handle professional contracts with clients inbuilt chatting,agreement signing and AI feature that lets user talk to the product on absence of the team.
+Loomen is a platform for freelancers, companies to handle clients , Payment,inbuilt chatting and AI feature that lets user talk to the product on absence of the team.
 All of this just by sharing a single link to your customer.
 
 
-![Logo](https://raw.githubusercontent.com/captain0jay/Loomen/main/assets/loomen.jpg)
+![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
 
 
 ## Installation
+To run the application go to server folder and .env file in this project make one if you dont have and put the following values
+
+```bash
+MONGO_URI 
+GOOGLE_AI_API 
+SQUARE_TOKEN 
+GITHUB_CLIENT_SECRET 
+GITHUB_CLIENT_ID 
+```
+
+## RUN the Application
 
 Download Loomen on your local machine and run this command
 
