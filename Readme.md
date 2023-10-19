@@ -5,7 +5,7 @@ Loomen is a platform for freelancers, companies to handle clients , Payment,inbu
 All of this just by sharing a single link to your customer.
 
 
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+![Logo](https://raw.githubusercontent.com/captain0jay/Loomen/main/assets/loomen.jpg)
 
 
 ## Installation
