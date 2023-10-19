@@ -10,7 +10,11 @@ const commSchema = new Schema({
     required: true},
   as: {type: String},
   producturl: {type: String},
-  agsent: {type: string}
+  chat: {type: String},
+  completed: {type: String},
+  pay: {type: String},
+  feedback: {type: String},
+  order_id: {type: String},
 });
 
 const commModel = mongoose.model('Comm',commSchema)

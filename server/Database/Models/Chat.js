@@ -1,15 +1,11 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
-  username: { type: String},
-  id: {type: String,
-       required: true },
-  accesst: { type: String, 
-           required: true},
-  webid: {type: String},
-  as: {type: String}
+const chatSchema = new Schema({
+  room: {type: String},
+  Chat: {type: Array},
+  llmchat: {type: Array}
 });
 
-const userModel = mongoose.model('User',userSchema)
-module.exports = userModel;
+const chatModel = mongoose.model('Chat',chatSchema)
+module.exports = chatModel;
