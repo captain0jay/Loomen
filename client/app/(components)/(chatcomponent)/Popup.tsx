@@ -48,11 +48,12 @@ export default function Popup() {
         getdata();
       },[])
 
-      const AddProduct = async function(url:any){
+      const AddProduct = async function(product_id:any){
         const current_chat = localStorage.getItem("current_chat");
         const headers = new Headers();
               headers.append("self", String(current_chat));
-              headers.append("producturl", String(url));
+              headers.append("to", String(current_chat));
+              headers.append("product_id", String(product_id));
           const response = await fetch("http://localhost:4000/updatecomm",{
           method:"GET",
           headers: headers,
@@ -76,25 +77,26 @@ export default function Popup() {
           <div className="p-4 bg-white rounded-t-[10px] flex-1">
             <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-zinc-300 mb-8" />
             <div className="">
-              <ScrollArea className="h-60 rounded-md border">
+              <ScrollArea className="h-60 rounded-md border p-2">
               {adds.map(element => {//!this.state.loading && 
                 return(
                 <Card>
-                <CardHeader className="grid grid-cols-[1fr_300px] items-start gap-4 space-y-0">
-                <div className='mt-4'>
+                <CardHeader className="grid grid-cols-11 items-start gap-4 space-y-0">
+                <div className='mt-4 col-span-1'>
                 <Avatar>
                     <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
                     <AvatarFallback>...</AvatarFallback>
                 </Avatar>
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-1 col-span-9 mt-4">
                     <CardTitle>{element.name}</CardTitle>
                     <CardDescription>
-                    {element.url}
+                    {element.description}
                     </CardDescription>
                 </div>
+                <Button onClick={() => AddProduct(`${element.product_id}`)} className='col-span-1'>Add</Button>
                 </CardHeader>
-                <Button onClick={AddProduct(`${element.url}`)}>Add</Button>
+                
                 </Card>)
             })}
               </ScrollArea>

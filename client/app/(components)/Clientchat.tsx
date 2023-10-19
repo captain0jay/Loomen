@@ -55,7 +55,7 @@ export default function Clientchat() {
   }
   return (
     <>
-    <Tabs defaultValue="account" className="w-[400px]">
+    <Tabs defaultValue="Ongoing" className="w-[400px] md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="Ongoing">Ongoing</TabsTrigger>
         <TabsTrigger value="Completed">Completed</TabsTrigger>

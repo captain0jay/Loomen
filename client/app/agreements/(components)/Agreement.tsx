@@ -29,36 +29,39 @@ export default function Agreement() {
       const github_id = localStorage.getItem("github_id")
       const headers = new Headers();
           headers.append("github_id", String(github_id));
-      const response = await fetch("http://localhost:4000/getadds",{
-      method:"GET",
-      headers: headers,
-      }).then((response)=>{
-          console.log(response)
-          return response.json();
-      }).then((data)=>{
-          console.log(data);
-          return data;
-      })
-      setAdds(response)
+          const responset = await fetch("http://localhost:4000/getadds",{
+            method:"GET",
+            headers: headers,
+            }).then((response)=>{
+                console.log(response)
+                return response.json();
+            }).then((data)=>{
+                console.log(data);
+                return data;
+            })
+      setAdds(responset)
     }
     getdata();
   },[])
 
+  const setProductid = (id: string) =>{
+    localStorage.setItem("product_id",id)
+  }
   const setchat = async function(current_chat:any){
     localStorage.setItem("current_chat",current_chat)
   }
   return (
     <>
-    <Tabs defaultValue="account" className="w-[400px]">
+    <Tabs defaultValue="Product" className="w-[400px]">
       <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="Agreement">Agreement</TabsTrigger>
-        <TabsTrigger value="Templates">Templates</TabsTrigger>
+        <TabsTrigger value="Product">Product/Service</TabsTrigger>
+        <TabsTrigger value="Depricated">Depricated</TabsTrigger>
       </TabsList>
-      <TabsContent value="Agreement">
+      <TabsContent value="Product">
 
       {adds.map(element => {//!this.state.loading && 
         return(
-        <Card>
+        <Card className='mt-2'>
         <CardHeader className="grid grid-cols-[1fr_300px] items-start gap-4 space-y-0">
           <div className='mt-4'>
           <Avatar>
@@ -67,16 +70,17 @@ export default function Agreement() {
           </Avatar>
           </div>
           <div className="space-y-1">
-            <CardTitle onClick={() => setchat(`${element.self}`)}>{element.name}</CardTitle>
+            <CardTitle onClick={() => setProductid(`${element.product_id}`)}>{element.name}</CardTitle>
             <CardDescription>
-              {element.url}
+              {element.description}
             </CardDescription>
+            <p>{element.price}</p>
         </div>
         </CardHeader>
         </Card>)
       })}
       </TabsContent>
-      <TabsContent value="Templates">
+      <TabsContent value="Depricated">
       <Card>
         <CardHeader className="grid grid-cols-[1fr_300px] items-start gap-4 space-y-0">
           <div className='mt-4'>

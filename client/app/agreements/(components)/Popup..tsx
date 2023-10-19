@@ -16,16 +16,19 @@ import {
   import { Input } from "@/components/ui/input"
 
 export default function Popup() {
-    const [url, setUrl] = useState<string>('');
+    const [price, setPrice] = useState<string>('');
     const [name, setName] = useState<string>('');
     const [description,setDescription] = useState<string>('');
    
-    const sendURL = async function(){
+    const sendProduct = async function(){
         const github_id = localStorage.getItem("github_id")
+        const as = localStorage.getItem("as")
         const headers = new Headers();
         headers.append("name", String(name));
-        headers.append("url", String(url));
+        headers.append("price", price);
         headers.append("github_id", String(github_id));
+        headers.append("description", String(description));
+        headers.append("as", String(as));
         await fetch("http://localhost:4000/add",{
         method:"GET",
         headers: headers,
@@ -41,7 +44,7 @@ export default function Popup() {
 
   return (
     <Drawer.Root>
-      <Drawer.Trigger asChild className='ml-[42%] inline-block'>
+      <Drawer.Trigger asChild className='inline-block'>
       <Button>Add</Button>
       </Drawer.Trigger>
       <Drawer.Portal>
@@ -51,23 +54,16 @@ export default function Popup() {
             <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-zinc-300 mb-8" />
             <div className="">
               <ScrollArea className="h-60 rounded-md border">
-                <Card className='p-4'>
-                <CardTitle>Upload file</CardTitle>
-                <CardDescription>If you havent uploaded your agreement file yet click here to add it to your dropbox
-                    account.
-                </CardDescription>
-                <CardTitle>Choose file</CardTitle>
-                <CardDescription>Already uploaded your agreement file? copy share URL and paste here
-                </CardDescription>
-                </Card>
-                <div className='grid grid-cols-16 gap-2 absolute bottom-0 mb-8'>
+                <Card>
+                <div className='grid grid-cols-16 gap-2 p-2'>
+                <CardTitle>Price</CardTitle>
                 <Input
                     type="text"
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
-                    placeholder="URL goes here."
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    placeholder="Product price..."
                     className='col-span-5' id="url" />
-
+                  <CardTitle>Name</CardTitle>
                 <Input
                     type="text"
                     value={name}
@@ -75,12 +71,14 @@ export default function Popup() {
                     placeholder="Name goes here."
                     className='col-span-5' id="name" />
 
+                <CardTitle>Description</CardTitle>
+
                <Textarea value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     className='col-span-5' id="description" placeholder="Type your message here." />
-                    <Button onClick={sendURL} className='col-span-1 mt-4'>Done</Button>
+                    <Button onClick={sendProduct} className='col-span-1 mt-4'>Done</Button>
                 </div>
-
+                </Card>
               </ScrollArea>
             </div>
           </div>

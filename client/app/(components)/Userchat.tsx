@@ -54,7 +54,7 @@ export default function Userchat() {
   }
   return (
     <>
-    <Tabs defaultValue="account" className="w-[400px]">
+    <Tabs defaultValue="Chats" className="w-[400px]">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="Chats">Chats</TabsTrigger>
         <TabsTrigger value="History">History</TabsTrigger>
